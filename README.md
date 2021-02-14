@@ -6,11 +6,10 @@ VoteBot is a simple single page application divided in three sections:
 - On the first section, the user can create and edit a poll with up to 10 options. 
 - On the second, the central one, the user can vote by selecting one of the options and pressing the "vote" button. 
 - On the third in the right, the chart will dynamically update basing on the questions created and the votes that each question got.
-A Demo can be reached [through this link](https://alexfrancescon2.github.io/).
 
 This project has been developed with the goal of following the requests indicated in the assigment as best as possible, making up assuptions when necessary.
 
-The app has been developed with HTML, CSS and JavaScript.
+The app has been developed with Angular and Typescript. A Demo in HTML, CSS and Javascript (repo: [here](https://github.com/AlexFrancescon2/AlexFrancescon2.github.io) )  can be reached [through this link](https://alexfrancescon2.github.io/).
 
 ### Assumptions and instructions
 On first load, the app will show an **header** and **three different sections**, two of them empty. 
