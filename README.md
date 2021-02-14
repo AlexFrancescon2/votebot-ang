@@ -1,27 +1,39 @@
-# FisrtApp
+# Votebot assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+### Introduction
 
-## Development server
+VoteBot is a simple single page application divided in three sections:
+- On the first section, the user can create and edit a poll with up to 10 options. 
+- On the second, the central one, the user can vote by selecting one of the options and pressing the "vote" button. 
+- On the third in the right, the chart will dynamically update basing on the questions created and the votes that each question got.
+A Demo can be reached [through this link](https://alexfrancescon2.github.io/).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project has been developed with the goal of following the requests indicated in the assigment as best as possible, making up assuptions when necessary.
 
-## Code scaffolding
+The app has been developed with HTML, CSS and JavaScript.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Assumptions and instructions
+On first load, the app will show an **header** and **three different sections**, two of them empty. 
 
-## Build
+On the header there is the Logo and a "Simulate" button, which I used to create a title and 10 questions during the testing process.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+On the first (left) section, the user can enter the **title** of the poll, and up to **10 possible answers** by entering the value in the 'Anwers' input and clicking on the 'Add' button on its right. When created, it will be created a new Answer object that will store a progressive numeric ID that will identify the answer, and the content (text) of the answer - what the user typed. The logic avoids blank (empty) answers to be created. 
+This answer will be displayed above the input, with the possibility to update or remove it. 
 
-## Running unit tests
+At the botom of the section, there will be a **'reset' button**. By clicking it, after to confirm the operation through the designated popup, it will reset all the three components and restore the app to the original status.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+On the second component there will be displayed the title of the poll and a list of radio button for each possible answer entered by the user. 
 
-## Running end-to-end tests
+For this section, the assuption made is that the poll should not exist - or at least, be visible by the voting user - untill at least the title or two options (possible answers) have been created - the **minimum requirement**. According to this, the second section (and also the third one) can toggle its content visibility according to the operations made on the first section: could be in the interest of the user (poll creator) to remove one possible answer and enter a new one, creating an interval of time where only one possible answer is available. 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Of course would have been better to handle this situation by using a 'Create' button, which would allow the user to create and update the poll once ready, but has been decided to discard this possibility, as it was not deemed to be the assigment request. On contrary, every component changes dynamically by updating the data in the first section.
 
-## Further help
+After to select one of the possible answers in the second section (by toggling the radio buttons), it's possible to vote the answer by clicking on the 'vote' button. By doing this, it will be created a new AnsweredQuestion object, which will store the relative answer ID (referring to the selected answer object) and the amount - a counter which will indicates the number of votes for this answer). If it was the first vote, a new poll chart will be created. Otherwise, the chart will be updated withy the new values.
+The chart gets created and updated thanks to a merge of the values of the two aforementioned objects (Answers and AnsweredQuestions), linked by the common answer numeric ID, which will results in an array containing the ID, the amount of votes and the text (content) of the answer.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The chart poll's Y axis (votes) changes dynamically its referenced unit of measure, giving a better experience with big numbers. Also, by hovering the cart poll's bars, it will be visible a tooltip that indicates the current amount of votes for the bar.
+
+It's important to point out another assumption: If the user modifies one of the possible questions, it's on its interest to mantain the status of the poll (and its possible answers) and just modify the text (content). According to this, this content will change dynamically in all the two other components. 
+On the contrary, by removing one of the possible answers, the user plausibly wants to remove it from the poll as well; in this case, both the radio list and the poll chart will be updated by removing this option.
+
+Alex Francescon
