@@ -1,0 +1,67 @@
+<h4>Handle your poll</h4>
+<p>Add, edit or remove the questions! Max 10 answers.</p>
+
+<div class="row">
+  <div class="col-12">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" class="form-control" placeholder="Add the title here" maxlength="80"
+        [(ngModel)]="title" (ngModelChange)="onTitleChange()">
+    </div> <!-- .form-group -->
+  </div> <!-- .col -->
+</div> <!-- .row -->
+
+<div class="row my-4">
+  <div class="col-12">
+    <p class="font-weight-bold mb-1">Possible answers ({{ totalPreparedAnswers }}/10): </p>
+    <div class="row" *ngIf="totalPreparedAnswers === 0">
+      <div class="col-12">
+        <p class="font-weight-italic mb-0 small">
+          You have no answers yet. Add an answer from the input below!
+        </p>
+      </div> <!-- .col -->
+    </div> <!-- .row -->
+    <div class="row" *ngIf="totalPreparedAnswers > 0">
+      <div class="col-12" *ngFor="let answer of answers">
+        <div class="input-group mt-3">
+          <input type="text" value="{{ answer.text }}"
+            class="form-control form-control-sm uploaded-answer" placeholder="Type an answer in here!" maxlength="80"
+            (ngModelChange)="onModifyAnswer(answer.id)" (keyup)="onModifyAnswer(answer.id, $event)">
+          <div class="input-group-append">
+            <button class="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center remove-answer"
+              type="button" title="remove a question" data-id="{{ answer.id }}"
+              (click)="onRemoveAnswer(answer.id)">
+              <svg style="width:21px;height:21px" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+              </svg>
+            </button>
+          </div> <!-- .input-group-append -->
+        </div> <!-- .input-group -->
+        <span class="error" *ngIf=""></span>
+      </div> <!-- .col -->
+    </div>
+  </div> <!-- .col -->
+</div> <!-- .row -->
+
+<div class="row">
+  <div class="col-12 form-group">
+    <label for="addAnswer">Answers</label>
+    <div class="input-group mb-3">
+      <input type="text" name="addAnswer" id="addAnswer" class="form-control form-control-sm"
+        [(ngModel)]="incomingAnswer" #addAnswer placeholder="Type an answer in here!" maxlength="80"
+        [disabled]="totalPreparedAnswers >= 10">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary btn-sm" type="button" id="addAnswerButton"
+          [disabled]="incomingAnswer == '' || totalPreparedAnswers >= 10" (click)="onAddAnswer(addAnswer)">Add</button>
+      </div> <!-- .input-group-append -->
+    </div> <!-- .input-group -->
+  </div> <!-- .col -->
+</div> <!-- .row -->
+<div class="row">
+  <div class="col-12 d-flex justify-content-end">
+    <button class="btn btn-custom-danger btn-sm" (click)="onReset()">
+      Reset
+    </button>
+  </div> <!-- .col -->
+</div> <!-- .row -->

@@ -1,0 +1,16 @@
+header {
+  background-color: #36a8be;
+  color: white;
+  padding: 20px 32px 20px 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoName {
+  font-size: 30px;
+  margin-left: 12px;
+}
+

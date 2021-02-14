@@ -1,0 +1,23 @@
+<h4 class="mb-4">Answer the question</h4>
+<div class="row questions-radio-wrapper" *ngIf="answers.length >= 2 && title">
+  <div class="col-12">
+    <h5 class="mb-3 questionTitle">{{ title }}</h5>
+  </div>
+  <div class="col-12" *ngFor="let answer of answers">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="question" id="question-{{answer.id}}" value="{{answer.id}}"
+      (click)="onDisableVoteButton(vote)" (change)="onRadioSelect(answer.id)">
+      <label class="form-check-label" for="question-{{answer.id}}">
+        {{ answer.text }}
+      </label>
+    </div>
+  </div>
+  <div class="col-12 d-flex justify-content-end">
+    <button class="btn btn-custom" id="vote" disabled #vote (click)="onVote($event.target)">
+      Vote
+    </button>
+  </div> <!-- .d-flex -->
+</div> <!-- .row -->
+<p class="content-not-ready answers mb-1" *ngIf="answers.length < 2 || !title">
+  The question is not ready yet!
+</p>

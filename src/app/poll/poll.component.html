@@ -1,0 +1,10 @@
+<h4 class="mb-4">Observe the results</h4>
+<p class="content-not-ready poll mb-1" *ngIf="answeredQuestions.length <= 0">The poll is not ready yet!</p>
+<div class="poll dynamic-content">
+    <h5 class="mb-3 questionTitle" *ngIf="answeredQuestions.length > 0">{{ title }}</h5>
+    <div class="row">
+        <div class="col-12 poll-wrapper">
+            <canvas id="poll">{{ chart }}</canvas>
+        </div> <!-- .col -->
+    </div> <!-- .row -->
+</div>

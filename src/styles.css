@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #f2f2f2 !important;
+}
+h4 {
+  color: #36a8be;
+}
+
+.btn-custom {
+  background-color: transparent !important;
+  border: 2px solid #36a8be !important;
+  border-radius: 30px !important;
+  padding: 10px 15px 10px 15px !important;
+  color: #36a8be !important;
+}
+
+.btn-custom:enabled:hover {
+  background-color: #36a8be !important;
+  color: #fff !important;
+}
+
+.btn-custom-danger {
+  background-color: transparent !important;
+  border: 2px solid #850b0b !important;
+  border-radius: 30px !important;
+  padding: 10px 15px 10px 15px !important;
+  color: #850b0b !important;
+}
+
+.btn-custom-danger:enabled:hover {
+  background-color: #850b0b !important;
+  color: #fff !important;
+}
+
+.content-not-ready {
+  font-style: italic;
+  text-align: center;
+  font-size: 18px;
+  color: #acacac;
+}
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
+}
+
+.error {
+  color: red;
+  font-size: small;
+  font-style: italic;
+  display: block;
+}
